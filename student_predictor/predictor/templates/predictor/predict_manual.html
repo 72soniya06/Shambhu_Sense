@@ -1,0 +1,86 @@
+{% extends "predictor/base.html" %}
+{% block content %}
+
+<h2>🎓 Manual Student Prediction</h2>
+
+<form method="post" id="predictForm">
+  {% csrf_token %}
+
+  <!-- Render all fields -->
+  {{ form.as_p }}
+
+  <button type="submit" style="
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;">
+    🔮 Predict
+  </button>
+</form>
+
+{% if result %}
+  <div class="result-box" style="
+      margin-top: 20px;
+      padding: 15px;
+      border: 1px solid #4CAF50;
+      border-radius: 8px;
+      background-color: #f0fff0;">
+    <h3>📊 Predicted Final Grade: <strong>{{ result }}</strong></h3>
+  </div>
+{% endif %}
+
+{% if messages %}
+  <ul class="messages" style="color: red; margin-top: 15px;">
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+<hr>
+
+<a href="{% url 'predict_csv' %}" style="margin-right:10px;">📂 Predict from CSV file</a>
+<a href="{% url 'logout' %}">🚪 Logout</a>
+
+<!-- 🧠 Category Toggle Script -->
+<script>
+function toggleCategoryFields() {
+    const categorySelect = document.getElementById("id_category");
+    if (!categorySelect) return;
+
+    const category = categorySelect.value;
+    const schoolFields = ["id_school_class", "id_percentage"];
+    const collegeFields = ["id_course", "id_course_year", "id_cgpa"];
+
+    // Utility: show/hide by CSS
+    function toggleFields(fields, display) {
+        fields.forEach(id => {
+            const el = document.getElementById(id);
+            if (el && el.closest("p")) {
+                el.closest("p").style.display = display;
+            }
+        });
+    }
+
+    if (category === "school") {
+        toggleFields(schoolFields, "block");
+        toggleFields(collegeFields, "none");
+    } else if (category === "college") {
+        toggleFields(schoolFields, "none");
+        toggleFields(collegeFields, "block");
+    }
+}
+
+// Initialize on load
+document.addEventListener("DOMContentLoaded", function() {
+    toggleCategoryFields();
+    const categorySelect = document.getElementById("id_category");
+    if (categorySelect) {
+        categorySelect.addEventListener("change", toggleCategoryFields);
+    }
+});
+</script>
+
+{% endblock %}

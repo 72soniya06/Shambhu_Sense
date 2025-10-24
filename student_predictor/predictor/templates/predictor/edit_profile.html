@@ -1,0 +1,44 @@
+{% extends "predictor/base.html" %}
+{% load static %}
+{% block content %}
+<div class="profile-container">
+  <h2>Edit Profile</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+      {{ form.first_name.label_tag }}<br>
+      {{ form.first_name }}
+    </div>
+    <div>
+      {{ form.last_name.label_tag }}<br>
+      {{ form.last_name }}
+    </div>
+    <div>
+      {{ form.email.label_tag }}<br>
+      {{ form.email }}
+    </div>
+    <div>
+      {{ form.phone.label_tag }}<br>
+      {{ form.phone }}
+    </div>
+    <div>
+      {{ form.roll_no.label_tag }}<br>
+      {{ form.roll_no }}
+    </div>
+    <div>
+      {{ form.school_or_college.label_tag }}<br>
+      {{ form.school_or_college }}
+    </div>
+    <div>
+      {{ form.role.label_tag }}<br>
+      {{ form.role }}
+    </div>
+    <div>
+      {{ form.profile_pic.label_tag }}<br>
+      {{ form.profile_pic }}
+    </div>
+    <br>
+    <button type="submit">Save Profile</button>
+  </form>
+</div>
+{% endblock %}

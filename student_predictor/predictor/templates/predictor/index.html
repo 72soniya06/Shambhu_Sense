@@ -1,0 +1,112 @@
+{% extends "predictor/base.html" %}
+{% load static %}
+{% block content %}
+<h2>🎓 Student Performance Predictor</h2>
+
+<!-- === Upload CSV Section === -->
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <h3>📂 Upload CSV for Bulk Prediction</h3>
+  <input type="file" name="csv_file" accept=".csv">
+  <button type="submit" name="action" value="upload">Upload & Predict</button>
+</form>
+
+{% if download_link %}
+  <div class="result-box">
+    <p>✅ Bulk predictions completed!</p>
+    <a href="{{ download_link }}" download>⬇ Download Predicted CSV</a>
+  </div>
+{% endif %}
+
+<hr>
+
+<!-- === Manual Prediction Form === -->
+<h3>🧮 Manual Entry Prediction</h3>
+
+<form method="post">
+  {% csrf_token %}
+  <input type="hidden" name="action" value="manual">
+
+  <!-- Category dropdown -->
+  <p>
+    <label for="id_category">Category:</label>
+    <select id="id_category" name="category">
+      <option value="">--Select--</option>
+      <option value="school">School</option>
+      <option value="college">College</option>
+    </select>
+  </p>
+
+  <!-- School: Class -->
+  <p id="school_field" style="display:none;">
+    <label for="id_school_class">Class:</label>
+    <select id="id_school_class" name="school_class">
+      {% for value, label in form.school_class.field.choices %}
+        <option value="{{ value }}">{{ label }}</option>
+      {% endfor %}
+    </select>
+  </p>
+
+  <!-- College: Course + Year -->
+  <p id="college_course_field" style="display:none;">
+    <label for="id_course">Course:</label>
+    <select id="id_course" name="course">
+      {% for value, label in form.course.field.choices %}
+        <option value="{{ value }}">{{ label }}</option>
+      {% endfor %}
+    </select>
+  </p>
+
+  <p id="college_year_field" style="display:none;">
+    <label for="id_course_year">Year:</label>
+    <select id="id_course_year" name="course_year">
+      {% for value, label in form.course_year.field.choices %}
+        <option value="{{ value }}">{{ label }}</option>
+      {% endfor %}
+    </select>
+  </p>
+
+  <!-- Other fields -->
+  {% for field in form %}
+      {% if field.name not in "category school_class course course_year" %}
+          <p>{{ field.label_tag }} {{ field }}</p>
+      {% endif %}
+  {% endfor %}
+
+  <button type="submit">Predict</button>
+</form>
+
+{% if result %}
+  <div class="result-box">
+    <h3>📊 Predicted Final Grade: <strong>{{ result }}</strong></h3>
+  </div>
+{% endif %}
+
+<a href="{% url 'logout' %}">🚪 Logout</a>
+
+<script>
+  const categorySelect = document.getElementById('id_category');
+  const schoolField = document.getElementById('school_field');
+  const collegeCourseField = document.getElementById('college_course_field');
+  const collegeYearField = document.getElementById('college_year_field');
+
+  function toggleFields() {
+    if (categorySelect.value === 'school') {
+      schoolField.style.display = 'block';
+      collegeCourseField.style.display = 'none';
+      collegeYearField.style.display = 'none';
+    } else if (categorySelect.value === 'college') {
+      schoolField.style.display = 'none';
+      collegeCourseField.style.display = 'block';
+      collegeYearField.style.display = 'block';
+    } else {
+      schoolField.style.display = 'none';
+      collegeCourseField.style.display = 'none';
+      collegeYearField.style.display = 'none';
+    }
+  }
+
+  categorySelect.addEventListener('change', toggleFields);
+  toggleFields();
+</script>
+{% endblock %}

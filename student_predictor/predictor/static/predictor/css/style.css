@@ -1,0 +1,235 @@
+/* ----------- General Layout ----------- */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+h1, h2, h3 {
+  text-align: center;
+  font-weight: 600;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 30px 40px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+
+/* ----------- Form Styling ----------- */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  font-weight: 500;
+}
+
+input, select {
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.8);
+  color: #333;
+}
+
+input:focus, select:focus {
+  box-shadow: 0 0 5px #6e8efb;
+}
+
+button {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  font-size: 16px;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s;
+}
+
+button:hover {
+  transform: scale(1.03);
+  background: linear-gradient(135deg, #764ba2, #667eea);
+}
+
+/* ----------- Links ----------- */
+a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #ffd6ff;
+}
+
+/* ----------- Messages ----------- */
+.messages {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.success {
+  color: #a2ffb9;
+}
+
+.error {
+  color: #ffb2b2;
+}
+
+.result-box {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 18px;
+}
+.upload-form {
+  background: #f8fafc;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.upload-form input[type="file"] {
+  margin: 10px 0;
+}
+
+.btn {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #1e40af;
+}
+
+.result-box {
+  margin-top: 20px;
+  background: #e0f2fe;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.download-btn {
+  display: inline-block;
+  margin-top: 10px;
+  background: #22c55e;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.download-btn:hover {
+  background: #16a34a;
+}
+/* ----------- Hamburger & Sidebar ----------- */
+.hamburger {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 35px;
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.hamburger div {
+  width: 100%;
+  height: 4px;
+  background-color: white;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  right: -300px;
+  top: 0;
+  width: 280px;
+  height: 100%;
+  background-color: #1e1e2f;
+  color: white;
+  padding: 20px;
+  transition: right 0.3s;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.sidebar.active {
+  right: 0;
+}
+
+.sidebar .profile-section {
+  text-align: center;
+}
+
+.sidebar .profile-section img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  border: 2px solid #fff;
+}
+
+.sidebar .profile-section h3,
+.sidebar .profile-section p {
+  margin: 5px 0;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.sidebar ul li {
+  margin: 15px 0;
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.sidebar ul li a:hover {
+  color: #ffd6ff;
+}
+
+.main-container.shifted {
+  margin-right: 280px;
+  transition: margin-right 0.3s;
+}

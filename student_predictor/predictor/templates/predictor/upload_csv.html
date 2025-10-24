@@ -1,0 +1,13 @@
+{% extends "predictor/base.html" %}
+{% block content %}
+<h2>📂 Upload CSV for Bulk Prediction</h2>
+
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <input type="file" name="csv_file" accept=".csv" required>
+  <br><br>
+  <button type="submit">Predict from CSV</button>
+</form>
+
+<a href="{% url 'home' %}">⬅️ Back to Manual Entry</a>
+{% endblock %}

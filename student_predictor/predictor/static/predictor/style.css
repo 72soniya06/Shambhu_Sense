@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Student Predictor</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+  <style>
+ /* Top-level setup */
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #e0e0e0;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+}
+
+body {
+  display: flex;
+  justify-content: center;  /* horizontally center */
+  align-items: center;      /* vertically center */
+  padding: 20px;            /* thoda spacing around */
+  box-sizing: border-box;
+}
+
+/* Container styling */
+.container {
+  width: 100%;
+  max-width: 600px;
+}
+
+/* Title block styling */
+header.title-block {
+    background-color: darkblue;
+    color: white;
+    padding: 40px 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Form block styling */
+div.form-block {
+    background-color: skyblue;
+    padding: 30px 20px;
+    border-radius: 10px;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 0 auto;  /* horizontally center inside container */
+}
+
+h1, h2, h3 {
+    margin: 0 0 10px 0;
+}
+
+form button {
+    cursor: pointer;
+    padding: 8px 16px;
+    border: none;
+    background-color: darkblue;
+    color: white;
+    border-radius: 5px;
+    font-size: 1rem;
+    align-self: flex-start;
+}
+
+form button:hover {
+    background-color: #003366;
+}
+
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="title-block">
+      <h1>Student Performance Predictor</h1>
+    </header>
+
+    <main>
+      {% if messages %}
+        <ul style="list-style:none; padding:0;">
+        {% for m in messages %}
+          <li>{{ m }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+{% extends "predictor/base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="csv-container">
+  <h2>📂 CSV Prediction</h2>
+
+  <form method="post" enctype="multipart/form-data" class="upload-form">
+    {% csrf_token %}
+    <label for="csv_file">Upload CSV File:</label>
+    <input type="file" name="csv_file" required>
+    <button type="submit" class="btn">Predict</button>
+  </form>
+
+  {% if predicted_file_url %}
+  <div class="download-section">
+    <h3>✅ Prediction Complete!</h3>
+    <a href="{{ predicted_file_url }}" class="download-btn">⬇ Download Predicted File</a>
+  </div>
+{% endif %}
+</div>
+
+<style>
+.csv-container {
+  text-align: center;
+  background: linear-gradient(135deg, #7f7fd5, #86a8e7, #91eae4);
+  min-height: 100vh;
+  padding-top: 80px;
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+.upload-form {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 30px;
+  border-radius: 15px;
+  display: inline-block;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.upload-form input[type="file"] {
+  margin: 15px 0;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.btn {
+  background: linear-gradient(90deg, #4e54c8, #8f94fb);
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+}
+
+.download-section {
+  margin-top: 30px;
+}
+
+.download-btn {
+  display: inline-block;
+  padding: 12px 25px;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  color: white;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.download-btn:hover {
+  background: linear-gradient(90deg, #0072ff, #00c6ff);
+  transform: scale(1.05);
+}
+</style>
+
+{% endblock %}
+

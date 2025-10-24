@@ -1,0 +1,15 @@
+{% extends "predictor/base.html" %}
+{% block content %}
+<h2>🧑‍🏫 Train Model (Teacher)</h2>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Train Model</button>
+</form>
+
+{% if message %}
+  <p>{{ message }}</p>
+{% endif %}
+
+<a href="{% url 'logout' %}">🚪 Logout</a>
+{% endblock %}
+

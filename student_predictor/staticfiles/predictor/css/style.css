@@ -1,0 +1,104 @@
+/* ----------- General Layout ----------- */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+h1, h2, h3 {
+  text-align: center;
+  font-weight: 600;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 30px 40px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+
+/* ----------- Form Styling ----------- */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  font-weight: 500;
+}
+
+input, select {
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.8);
+  color: #333;
+}
+
+input:focus, select:focus {
+  box-shadow: 0 0 5px #6e8efb;
+}
+
+button {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  font-size: 16px;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s;
+}
+
+button:hover {
+  transform: scale(1.03);
+  background: linear-gradient(135deg, #764ba2, #667eea);
+}
+
+/* ----------- Links ----------- */
+a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #ffd6ff;
+}
+
+/* ----------- Messages ----------- */
+.messages {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.success {
+  color: #a2ffb9;
+}
+
+.error {
+  color: #ffb2b2;
+}
+
+.result-box {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 18px;
+}

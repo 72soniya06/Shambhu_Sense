@@ -1,0 +1,34 @@
+{% extends "predictor/base.html" %}
+{% load static %}
+{% block content %}
+<div class="profile-container">
+  <h2>My Profile</h2>
+  <div class="profile-card">
+    {% if profile.profile_pic %}
+      <img src="{{ profile.profile_pic.url }}" class="profile-pic" alt="Profile Picture">
+    {% else %}
+      <img src="{% static 'predictor/img/default_profile.png' %}" class="profile-pic" alt="Default Profile Picture">
+    {% endif %}
+
+    <div class="profile-info">
+  <p><strong>Name:</strong> {{ request.user.get_full_name|default:request.user.username }}</p>
+  <p><strong>Username:</strong> {{ request.user.username }}</p>
+  <p><strong>Email:</strong> {{ request.user.email }}</p>
+  <p><strong>Phone:</strong> {{ profile.phone|default:"Not Provided" }}</p>
+  <p><strong>Roll No:</strong> {{ profile.roll_no|default:"Not Provided" }}</p>
+  <p><strong>School/College:</strong> {{ profile.school_or_college|default:"Not Provided" }}</p>
+  <p><strong>Role:</strong> {{ profile.role|title|default:"Student/Teacher" }}</p>
+</div>
+
+  </div>
+  <a href="{% url 'edit_profile' %}" class="btn btn-primary mt-3">Edit Profile</a>
+</div>
+
+<style>
+.profile-container { max-width: 600px; margin: 30px auto; text-align: center; }
+.profile-card { border: 1px solid #ddd; border-radius: 12px; padding: 20px; background: #fafafa; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+.profile-pic { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 2px solid #007bff; margin-bottom: 15px; }
+.profile-info p { margin: 8px 0; font-size: 16px; }
+.btn { padding: 10px 20px; border-radius: 8px; text-decoration: none; color: white; background-color: #007bff; }
+</style>
+{% endblock %}
