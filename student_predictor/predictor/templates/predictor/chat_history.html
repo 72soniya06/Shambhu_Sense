@@ -1,0 +1,23 @@
+{% extends "predictor/base.html" %}
+{% block content %}
+<div style="max-width:600px; margin:40px auto; text-align:center; background:#f0f4ff; border-radius:10px; padding:20px;">
+    <h2>📜 Chat History</h2>
+
+    {% if chats %}
+        {% for chat in chats %}
+        <div style="background:white; margin:10px; padding:10px; border-radius:8px; text-align:left;">
+            <p><b>You:</b> {{ chat.message }}</p>
+            <p><b>🤖:</b> {{ chat.response }}</p>
+            <a href="{% url 'delete_chat' chat.id %}" style="color:red; font-size:13px;">🗑 Delete</a>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>No chat history found.</p>
+    {% endif %}
+
+    <br>
+    <a href="{% url 'chatbot' %}" style="background:#4CAF50; color:white; padding:10px 20px; border-radius:8px; text-decoration:none;">💬 Back to Chat</a>
+</div>
+{% endblock %}
+
+

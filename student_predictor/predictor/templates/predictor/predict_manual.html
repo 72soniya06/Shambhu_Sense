@@ -1,12 +1,83 @@
 {% extends "predictor/base.html" %}
 {% block content %}
+<!-- Search Bar -->
+<div style="display: flex; justify-content: center; margin-bottom: 20px;">
+  <form method="get" action="{% url 'search_papers' %}"
+        style="display: flex; width: 50%; position: relative;">
+    <input
+      type="text"
+      name="query"
+      placeholder="Search papers, assignments..."
+      style="width: 100%; padding: 10px 45px 10px 15px; border-radius: 25px; border: 1px solid #ccc; outline: none; font-size: 16px;"
+    />
+    <button type="submit"
+            style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 18px;">
+      🔍
+    </button>
+  </form>
+</div>
+
+<h3 style="text-align:center; color:white; margin-bottom:8px;">🌞 Today’s Motivation</h3>
+
+<!-- 🌟 Motivation Box -->
+<div style="
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  max-width: 700px;
+  margin: 0 auto 20px auto;
+  padding: 15px 25px;
+  text-align: center;
+  transition: all 0.5s ease;
+">
+  <div id="motivation-content"
+       style="font-size: 18px; font-weight: 500; color: #333; transition: opacity 1s; opacity: 1;">
+    <!-- Quote will appear here -->
+  </div>
+</div>
+
+<script>
+const quotes = [
+  { text: "📚 Believe in yourself! Every small effort adds up to success.", img: "https://cdn-icons-png.flaticon.com/512/616/616408.png" },
+  { text: "🚀 Keep pushing your limits – your future self will thank you!", img: "https://cdn-icons-png.flaticon.com/512/814/814513.png" },
+  { text: "🎯 Focus, study smart, and let success follow!", img: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png" },
+  { text: "💡 Mistakes are proof that you’re trying. Keep going!", img: "https://cdn-icons-png.flaticon.com/512/616/616409.png" },
+  { text: "🔥 Hard work beats talent when talent doesn’t work hard!", img: "https://cdn-icons-png.flaticon.com/512/616/616408.png" },
+  { text: "🌈 Every day is a new chance to learn something great!", img: "https://cdn-icons-png.flaticon.com/512/616/616554.png" }
+];
+
+let index = Math.floor(Math.random() * quotes.length);
+const contentDiv = document.getElementById("motivation-content");
+
+function showQuote() {
+  const q = quotes[index];
+  contentDiv.style.opacity = 0;
+  setTimeout(() => {
+    contentDiv.innerHTML = `
+      <img src="${q.img}" alt="motivation" width="40"
+           style="vertical-align:middle; margin-right:10px;">
+      ${q.text}
+    `;
+    contentDiv.style.opacity = 1;
+  }, 500);
+
+  index = (index + 1) % quotes.length;
+}
+
+// Show first quote immediately
+showQuote();
+
+// Rotate quote every 5 seconds
+setInterval(showQuote, 5000);
+</script>
+
+
 
 <h2>🎓 Manual Student Prediction</h2>
 
 <form method="post" id="predictForm">
   {% csrf_token %}
 
-  <!-- Render all fields -->
   {{ form.as_p }}
 
   <button type="submit" style="
@@ -20,17 +91,6 @@
   </button>
 </form>
 
-{% if result %}
-  <div class="result-box" style="
-      margin-top: 20px;
-      padding: 15px;
-      border: 1px solid #4CAF50;
-      border-radius: 8px;
-      background-color: #f0fff0;">
-    <h3>📊 Predicted Final Grade: <strong>{{ result }}</strong></h3>
-  </div>
-{% endif %}
-
 {% if messages %}
   <ul class="messages" style="color: red; margin-top: 15px;">
     {% for message in messages %}
@@ -38,6 +98,7 @@
     {% endfor %}
   </ul>
 {% endif %}
+
 
 <hr>
 
@@ -54,7 +115,6 @@ function toggleCategoryFields() {
     const schoolFields = ["id_school_class", "id_percentage"];
     const collegeFields = ["id_course", "id_course_year", "id_cgpa"];
 
-    // Utility: show/hide by CSS
     function toggleFields(fields, display) {
         fields.forEach(id => {
             const el = document.getElementById(id);
@@ -73,7 +133,6 @@ function toggleCategoryFields() {
     }
 }
 
-// Initialize on load
 document.addEventListener("DOMContentLoaded", function() {
     toggleCategoryFields();
     const categorySelect = document.getElementById("id_category");
@@ -83,4 +142,161 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
+<!-- 🤖 Chatbot Icon + Popup -->
+<style>
+#chatbot-icon {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    font-size: 30px;
+    line-height: 60px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: all 0.3s;
+}
+#chatbot-icon:hover { background-color: #3e8e41; }
+
+#chatbot-window {
+    position: fixed;
+    bottom: 90px;
+    right: 25px;
+    width: 320px;
+    height: 400px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+#chat-header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#chat-messages {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    font-size: 14px;
+}
+
+#chat-input-box {
+    display: flex;
+    border-top: 1px solid #ccc;
+}
+
+#chat-input {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    outline: none;
+}
+
+#send-btn {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+</style>
+
+<a href="{% url 'chatbot' %}" id="chatbot-icon" style="
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    font-size: 30px;
+    line-height: 60px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: all 0.3s;
+    text-decoration: none;
+">💬</a>
+
+
+<div id="chatbot-window">
+  <div id="chat-header">Shambhu AI Assistant</div>
+  <div id="chat-messages">
+    <p><b>🤖:</b> Hi! I'm Shambhu AI. Ask anything about your studies or performance.</p>
+  </div>
+  <div id="chat-input-box">
+    <input type="text" id="chat-input" placeholder="Type your question..." />
+    <button id="send-btn">Send</button>
+  </div>
+</div>
+
+<script>
+const chatbotIcon = document.getElementById("chatbot-icon");
+const chatbotWindow = document.getElementById("chatbot-window");
+const sendBtn = document.getElementById("send-btn");
+const chatInput = document.getElementById("chat-input");
+const chatMessages = document.getElementById("chat-messages");
+
+chatbotIcon.addEventListener("click", () => {
+  chatbotWindow.style.display = chatbotWindow.style.display === "flex" ? "none" : "flex";
+});
+
+sendBtn.addEventListener("click", async () => {
+  const userText = chatInput.value.trim();
+  if (!userText) return;
+
+  // show user message
+  const userMsg = document.createElement("p");
+  userMsg.innerHTML = `<b>You:</b> ${userText}`;
+  chatMessages.appendChild(userMsg);
+  chatInput.value = "";
+
+  // show loading
+  const aiMsg = document.createElement("p");
+  aiMsg.innerHTML = `<b>🤖:</b> Thinking...`;
+  chatMessages.appendChild(aiMsg);
+
+  try {
+    const response = await fetch("/chatbot_api/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "X-CSRFToken": "{{ csrf_token }}",
+      },
+      body: new URLSearchParams({ message: userText }),
+    });
+
+    const data = await response.json();
+
+    if (data.answer) {
+      aiMsg.innerHTML = `<b>🤖:</b> ${data.answer}`;
+    } else {
+      aiMsg.innerHTML = `<b>🤖:</b> Error: ${data.error || "Unknown error"}`;
+    }
+  } catch (err) {
+    aiMsg.innerHTML = `<b>🤖:</b> Network Error: ${err.message}`;
+  }
+
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+});
+</script>
+{% if result %}
+<div style="margin-top:20px; background:#f0fff4; border:2px solid #4CAF50; border-radius:10px; padding:15px;">
+  <h3>🎯 Predicted Final Grade: <span style="color:#2e7d32;">{{ result }}</span></h3>
+  <p><b>💡 Study Tips:</b> {{ tips }}</p>
+</div>
+{% endif %}
 {% endblock %}
+

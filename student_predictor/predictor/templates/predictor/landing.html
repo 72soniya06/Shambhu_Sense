@@ -2,61 +2,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Shambhu Sense</title>
-  <link rel="stylesheet" href="{% static 'predictor/css/style.css' %}">
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      color: white;
-      text-align: center;
-    }
-    .logo {
-      width: 150px;
-      height: 150px;
-      background: url("{% static 'predictor/img/logo.png' %}") no-repeat center;
-      background-size: contain;
-      margin-bottom: 30px;
-    }
-    h1 {
-      font-size: 4rem;
-      margin-bottom: 10px;
-    }
-    h3 {
-      font-size: 1.8rem;
-      margin-bottom: 40px;
-      font-weight: 400;
-    }
-    .btn {
-      padding: 15px 30px;
-      font-size: 1.2rem;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      background: linear-gradient(90deg, #f7971e, #ffd200);
-      color: white;
-      transition: 0.3s;
-      text-decoration: none;
-    }
-    .btn:hover {
-      transform: scale(1.05);
-      background: linear-gradient(90deg, #ffd200, #f7971e);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shambhu Sense</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(to bottom right, #6a11cb, #2575fc);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeIn 1.2s ease-in-out;
+            transform: scale(1);
+            transition: transform 1s ease;
+        }
+
+        .logo img {
+            width: 300px; /* increased size */
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            margin-top: 10px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+
+        .fade-out {
+            animation: fadeOut 1s forwards;
+        }
+    </style>
+
+    <script>
+        // After 3 seconds, fade out and redirect to login (role_select)
+        setTimeout(function() {
+            document.body.classList.add('fade-out');
+            setTimeout(function() {
+                window.location.href = "{% url 'role_select' %}";
+            }, 1000); // fade out duration
+        }, 3000);
+    </script>
 </head>
 <body>
-  <div class="logo"></div>
-  <h1>Shambhu Sense</h1>
-  <h3>Student Performance Predictor</h3>
-
-  <a href="{% url 'role_select' %}" class="btn">Enter</a>
+    <div class="logo">
+        <img src="{% static 'predictor/img/shambhu_logo.png' %}" alt="Shambhu Sense Logo">
+        <div class="tagline">Student Performance Predictor</div>
+    </div>
 </body>
 </html>

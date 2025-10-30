@@ -1,0 +1,90 @@
+{% extends "predictor/base.html" %}
+{% block content %}
+
+<h2>🤖 Shambhu AI Assistant</h2>
+
+<div id="chat-window" style="max-width: 500px; margin: 20px auto; border:1px solid #4CAF50; border-radius:10px; display:flex; flex-direction:column; height:500px;">
+    <div id="chat-messages" style="flex:1; padding:10px; overflow-y:auto; font-size:14px; background:#f9f9f9;">
+        <p><b>🤖:</b> Hi! I'm Shambhu AI. Ask anything about your studies or performance.</p>
+
+        {% for chat in chats %}
+            <p><b>You:</b> {{ chat.message }}</p>
+            <p><b>🤖:</b> {{ chat.response|linebreaksbr }}</p>
+        {% endfor %}
+    </div>
+
+    <div id="chat-input-box" style="display:flex; border-top:1px solid #ccc;">
+        <input type="text" id="chat-input" placeholder="Type your question..." style="flex:1; padding:10px; border:none; outline:none;">
+        <button id="send-btn" style="background:#4CAF50; color:white; border:none; padding:10px 15px; cursor:pointer;">Send</button>
+    </div>
+</div>
+
+<div style="text-align:center;">
+  <a href="{% url 'chat_history' %}" style="background:#2196F3; color:white; padding:8px 15px; border-radius:8px; text-decoration:none;">🕓 View Chat History</a>
+</div>
+
+<style>
+#chat-messages p {
+  margin: 8px 0;
+  line-height: 1.6;
+}
+#chat-messages b {
+  color: #4b0082;
+}
+#chat-messages i {
+  color: #333;
+}
+</style>
+
+<script>
+const sendBtn = document.getElementById("send-btn");
+const chatInput = document.getElementById("chat-input");
+const chatMessages = document.getElementById("chat-messages");
+
+sendBtn.addEventListener("click", async () => {
+    const userText = chatInput.value.trim();
+    if (!userText) return;
+
+    const userMsg = document.createElement("p");
+    userMsg.innerHTML = `<b>You:</b> ${userText}`;
+    chatMessages.appendChild(userMsg);
+    chatInput.value = "";
+
+    const aiMsg = document.createElement("p");
+    aiMsg.innerHTML = `<b>🤖:</b> Thinking...`;
+    chatMessages.appendChild(aiMsg);
+
+    try {
+        const response = await fetch("{% url 'chatbot_api' %}", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "X-CSRFToken": "{{ csrf_token }}",
+            },
+            body: new URLSearchParams({ message: userText })
+        });
+
+        const data = await response.json();
+        if (data.answer) {
+            // ✅ Format response for readability
+            let formatted = data.answer
+                .replace(/\*\*(.*?)\*\*/g, "<b>$1</b>")   // bold
+                .replace(/\*(.*?)\*/g, "<i>$1</i>")       // italics
+                .replace(/\n/g, "<br>")                   // line breaks
+                .replace(/(\d+)\.\s/g, "<br>🔹 $1. ");    // numbered points
+            aiMsg.innerHTML = `<b>🤖:</b> ${formatted}`;
+        } else if (data.error) {
+            aiMsg.innerHTML = `<b>🤖:</b> Error: ${data.error}`;
+        }
+    } catch (err) {
+        aiMsg.innerHTML = `<b>🤖:</b> Network error`;
+    }
+
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+});
+</script>
+
+{% endblock %}
+
+
+

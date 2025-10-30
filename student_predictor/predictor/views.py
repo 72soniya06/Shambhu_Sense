@@ -20,6 +20,10 @@ def load_model():
         return None
     return joblib.load(MODEL_FILE)
 
+def landing_page(request):
+    return render(request, 'predictor/landing.html')
+
+
 
 # ------------------ Role Selection ------------------
 def role_select(request):
@@ -105,6 +109,20 @@ def predict_manual(request):
     model_bundle = load_model()
     form = PredictForm(request.POST or None)
     result = None
+    tips = None  # 🟢 add variable for study tips
+
+    # --- Function to generate personalized tips ---
+    def get_study_tips(grade):
+        if grade >= 90:
+            return "🌟 Excellent! Keep maintaining consistency and help others in studies to strengthen your knowledge."
+        elif grade >= 75:
+            return "💪 Great job! Try focusing more on weak subjects and regular revision to move towards excellence."
+        elif grade >= 60:
+            return "📘 Good effort! Increase your daily study hours slightly and revise weekly to improve your score."
+        elif grade >= 45:
+            return "📈 You’re improving! Focus on completing assignments on time and maintaining attendance."
+        else:
+            return "⚠ Needs improvement! Stay consistent, attend all classes, and ask for help when needed."
 
     if request.method == 'POST' and form.is_valid():
         if not model_bundle:
@@ -129,25 +147,28 @@ def predict_manual(request):
             # 🟢 Add category-specific numeric values
             if category == 'school':
                 data['percentage'] = form.cleaned_data.get('percentage') or 0
-                data['cgpa'] = 0  # keep cgpa 0 for school students
+                data['cgpa'] = 0
             else:
                 data['cgpa'] = form.cleaned_data.get('cgpa') or 0
-                data['percentage'] = 0  # keep percentage 0 for college students
+                data['percentage'] = 0
 
             # Convert to DataFrame
             df = pd.DataFrame([data])
 
-            # Handle feature alignment
+            # Ensure feature alignment
             for col in features:
                 if col not in df.columns:
                     df[col] = 0
             df = df[features]
 
-            # Make prediction
+            # 🧮 Make prediction
             pred = pipeline.predict(df)[0]
             result = round(float(pred), 2)
 
-            # Save prediction in DB
+            # 🎯 Generate study tips based on performance
+            tips = get_study_tips(result)
+
+            # 💾 Save prediction in DB
             Prediction.objects.create(
                 student_name=form.cleaned_data['student_name'],
                 gender=form.cleaned_data['gender'],
@@ -163,7 +184,7 @@ def predict_manual(request):
     context.update({
         'form': form,
         'result': result,
-
+        'tips': tips,  # 🟢 add to context
     })
     return render(request, 'predictor/predict_manual.html', context)
 
@@ -408,7 +429,133 @@ def register_user(request):
 
     return render(request, "predictor/register.html")
 
+from django.shortcuts import render, redirect
+from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
+from .models import ChatHistory
+import requests, os
+from dotenv import load_dotenv
+
+load_dotenv()
+api_key = os.getenv("GEMINI_API_KEY")
+
+# ✅ Chatbot main page
+@login_required
+def chatbot_page(request):
+    return render(request, "predictor/chatbot.html")
+
+# ✅ Handle AI responses
+@csrf_exempt
+@login_required
+def chatbot_api(request):
+    if request.method == "POST":
+        user_message = request.POST.get("message", "").strip()
+        if not user_message:
+            return JsonResponse({"error": "No message provided."})
+
+        try:
+            url = f"https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash-lite:generateContent?key={api_key}"
+            headers = {"Content-Type": "application/json"}
+            payload = {
+                "contents": [{"role": "user", "parts": [{"text": user_message}]}]
+            }
+
+            response = requests.post(url, headers=headers, json=payload)
+            result = response.json()
+
+            if "candidates" in result:
+                ai_reply = result["candidates"][0]["content"]["parts"][0]["text"]
+
+                # ✅ Save in ChatHistory
+                ChatHistory.objects.create(
+                    user=request.user,
+                    message=user_message,
+                    response=ai_reply
+                )
+
+                return JsonResponse({"answer": ai_reply})
+
+            elif "error" in result:
+                return JsonResponse({"error": result["error"].get("message", "API error.")})
+
+            return JsonResponse({"error": "Unexpected response format."})
+
+        except Exception as e:
+            return JsonResponse({"error": str(e)})
+
+    return JsonResponse({"error": "Invalid request method."})
+
+# ✅ Show chat history
+@login_required
+def chat_history(request):
+    chats = ChatHistory.objects.filter(user=request.user).order_by("-timestamp")
+    return render(request, "predictor/chat_history.html", {"chats": chats})
+
+# ✅ Delete single chat
+@login_required
+def delete_chat(request, chat_id):
+    ChatHistory.objects.filter(id=chat_id, user=request.user).delete()
+    return redirect("chat_history")
+
+import os
+print("Gemini key loaded:", os.getenv("GEMINI_API_KEY"))
 
 
+
+# predictor/views.py
+
+from django.shortcuts import render
+
+def chatbot_page(request):
+    return render(request, 'predictor/chatbot.html')
+
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
+from django.contrib import messages
+from .models import LibraryFile
+
+@login_required
+def add_to_library(request, title, file_url):
+    LibraryFile.objects.create(
+        user=request.user,
+        title=title,
+        file_url=file_url
+    )
+    messages.success(request, f"📚 '{title}' saved to your library!")
+    return redirect('my_library')
+
+@login_required
+def my_library(request):
+    files = LibraryFile.objects.filter(user=request.user).order_by('-uploaded_at')
+    return render(request, 'predictor/my_library.html', {'files': files})
+
+@login_required
+def delete_from_library(request, file_id):
+    file = LibraryFile.objects.get(id=file_id, user=request.user)
+    file.delete()
+    messages.success(request, "🗑️ File removed from your library.")
+    return redirect('my_library')
+
+from django.shortcuts import render, redirect
+from .models import LibraryFile
+from django.contrib.auth.decorators import login_required
+
+from django.shortcuts import render
+
+def search_papers(request):
+    query = request.GET.get('query', '')
+    results = []
+
+    # Example: you can later connect this with database or external API
+    if query:
+        # Just demo results (replace with actual logic)
+        results = [
+            {"title": f"{query} - PYQ 2024", "link": "#"},
+            {"title": f"{query} - Notes", "link": "#"},
+            {"title": f"{query} - Assignment", "link": "#"},
+        ]
+
+    return render(request, 'predictor/search_results.html', {'query': query, 'results': results})
 
 

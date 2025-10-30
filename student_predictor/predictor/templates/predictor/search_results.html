@@ -1,0 +1,16 @@
+{% extends "predictor/base.html" %}
+{% block content %}
+<h2>🔍 Search Results for "{{ query }}"</h2>
+
+{% if results %}
+  <ul>
+    {% for r in results %}
+      <li><a href="{{ r.link }}">{{ r.title }}</a></li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No results found.</p>
+{% endif %}
+
+<a href="{% url 'predict_manual' %}">⬅ Back to Manual Prediction</a>
+{% endblock %}
