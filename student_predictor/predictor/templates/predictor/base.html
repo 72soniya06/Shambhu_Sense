@@ -177,8 +177,6 @@
     <ul>
   <li><a href="{% url 'profile_view' %}">👤 My Profile</a></li>
   <li><a href="{% url 'predict_manual' %}">🏠 Home</a></li>
-  <li><a href="{% url 'my_library' %}">📚 My Library</a></li>
-
   <li><a href="{% url 'predict_manual' %}">Manual Entry</a></li>
   <li><a href="{% url 'predict_csv' %}">CSV Upload</a></li>
   <li><a href="{% url 'logout' %}">🚪 Logout</a></li>
@@ -193,7 +191,7 @@
 
   <!-- Main Content -->
   <div class="main-container" id="main-container">
-    {% block content %}
+      {% block content %}
     {% endblock %}
   </div>
 

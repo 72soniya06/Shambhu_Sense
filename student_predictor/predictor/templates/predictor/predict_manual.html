@@ -1,22 +1,5 @@
 {% extends "predictor/base.html" %}
 {% block content %}
-<!-- Search Bar -->
-<div style="display: flex; justify-content: center; margin-bottom: 20px;">
-  <form method="get" action="{% url 'search_papers' %}"
-        style="display: flex; width: 50%; position: relative;">
-    <input
-      type="text"
-      name="query"
-      placeholder="Search papers, assignments..."
-      style="width: 100%; padding: 10px 45px 10px 15px; border-radius: 25px; border: 1px solid #ccc; outline: none; font-size: 16px;"
-    />
-    <button type="submit"
-            style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 18px;">
-      🔍
-    </button>
-  </form>
-</div>
-
 <h3 style="text-align:center; color:white; margin-bottom:8px;">🌞 Today’s Motivation</h3>
 
 <!-- 🌟 Motivation Box -->
