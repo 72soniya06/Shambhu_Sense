@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3cb89e8a-cdc9-42ac-9f1b-64fe7bae4327" name="Changes" comment="recently updated">
-      <change beforePath="$PROJECT_DIR$/student_predictor/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/student_predictor/requirements.txt" afterDir="false" />
-    </list>
+    <list default="true" id="3cb89e8a-cdc9-42ac-9f1b-64fe7bae4327" name="Changes" comment="recently updated" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -163,7 +161,23 @@
       <option name="project" value="LOCAL" />
       <updated>1762271321457</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="recently updated">
+      <option name="closed" value="true" />
+      <created>1762271733623</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1762271733623</updated>
+    </task>
+    <task id="LOCAL-00011" summary="recently updated">
+      <option name="closed" value="true" />
+      <created>1762271742147</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1762271742147</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
