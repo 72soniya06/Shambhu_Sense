@@ -7,16 +7,7 @@
     <list default="true" id="3cb89e8a-cdc9-42ac-9f1b-64fe7bae4327" name="Changes" comment="recently updated">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/student_predictor/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/student_predictor/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/student_predictor/media/library_files/student_data.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/student_predictor/media/predicted_student_sample_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/student_predictor/media/predicted_student_sample_data.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/student_predictor/predictor/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/student_predictor/predictor/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/student_predictor/predictor/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/student_predictor/predictor/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/student_predictor/predictor/templates/predictor/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/student_predictor/predictor/templates/predictor/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/student_predictor/predictor/templates/predictor/my_library.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/student_predictor/predictor/templates/predictor/predict_manual.html" beforeDir="false" afterPath="$PROJECT_DIR$/student_predictor/predictor/templates/predictor/predict_manual.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/student_predictor/predictor/templates/predictor/search_results.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/student_predictor/predictor/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/student_predictor/predictor/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/student_predictor/predictor/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/student_predictor/predictor/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student_predictor/student_data.csv" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,9 +31,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {}
-}]]></component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {}
+}</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/72soniya06/Shambhu_Sense.git&quot;,
@@ -75,12 +66,14 @@
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/hh/PycharmProjects/Shambhu_Sense/student_predictor/predictor/static/predictor/img&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/hh/OneDrive/Attachments/Documents/Desktop/shambhu_sense&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.language&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\hh\OneDrive\Attachments\Documents\Desktop\shambhu_sense" />
+      <recent name="C:\Users\hh\PycharmProjects\Shambhu_Sense\student_predictor\predictor\templates\predictor" />
       <recent name="C:\Users\hh\PycharmProjects\Shambhu_Sense\student_predictor\predictor\static\predictor\img" />
       <recent name="C:\Users\hh\PycharmProjects\Shambhu_Sense\student_predictor\media\profile" />
     </key>
@@ -108,7 +101,23 @@
       <option name="project" value="LOCAL" />
       <updated>1761816888264</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="recently updated">
+      <option name="closed" value="true" />
+      <created>1762011197453</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1762011197453</updated>
+    </task>
+    <task id="LOCAL-00003" summary="recently updated">
+      <option name="closed" value="true" />
+      <created>1762011355437</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1762011355437</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
