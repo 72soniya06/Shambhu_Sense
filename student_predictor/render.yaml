@@ -2,11 +2,9 @@ services:
   - type: web
     name: shambhu-sense
     env: python
-    plan: free
-    buildCommand: "./build.sh"
-    startCommand: "gunicorn student_predictor.wsgi:application"
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn student_predictor.wsgi:application
     envVars:
-      - key: DJANGO_SETTINGS_MODULE
-        value: student_predictor.settings
       - key: PYTHON_VERSION
-        value: 3.10
+        value: 3.11
+
