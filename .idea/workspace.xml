@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3cb89e8a-cdc9-42ac-9f1b-64fe7bae4327" name="Changes" comment="recently updated" />
+    <list default="true" id="3cb89e8a-cdc9-42ac-9f1b-64fe7bae4327" name="Changes" comment="recently updated">
+      <change beforePath="$PROJECT_DIR$/student_predictor/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/student_predictor/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student_predictor/predictor/static/predictor/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/student_predictor/predictor/static/predictor/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student_predictor/predictor/templates/predictor/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/student_predictor/predictor/templates/predictor/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student_predictor/predictor/templates/predictor/predict_manual.html" beforeDir="false" afterPath="$PROJECT_DIR$/student_predictor/predictor/templates/predictor/predict_manual.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -241,7 +246,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762419311562</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="recently updated">
+      <option name="closed" value="true" />
+      <created>1762419595694</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1762419595694</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
