@@ -1,4 +1,24 @@
 /* ----------- General Layout ----------- */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form p {
+  width: 100%;
+  max-width: 400px;
+}
+
+input, select {
+  width: 100% !important;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size: 15px;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   background: linear-gradient(135deg, #6e8efb, #a777e3);

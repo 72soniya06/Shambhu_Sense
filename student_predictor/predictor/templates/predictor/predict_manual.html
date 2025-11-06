@@ -1,5 +1,31 @@
 {% extends "predictor/base.html" %}
 {% block content %}
+<!-- 🧠 Test Icon (Left Corner) -->
+<a href="{% url 'test_page' %}"
+   title="Take a Test"
+   style="
+     position: fixed;
+     top: 20px;
+     left: 20px; /* 👈 left side pe shift */
+     background-color: #007bff;
+     color: white;
+     border-radius: 50%;
+     width: 55px;
+     height: 55px;
+     text-align: center;
+     font-size: 26px;
+     line-height: 55px;
+     text-decoration: none;
+     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+     transition: 0.3s;
+     z-index: 1000;
+   "
+   onmouseover="this.style.backgroundColor='#0056b3';"
+   onmouseout="this.style.backgroundColor='#007bff';">
+  🧠
+</a>
+
+
 <h3 style="text-align:center; color:white; margin-bottom:8px;">🌞 Today’s Motivation</h3>
 
 <!-- 🌟 Motivation Box -->
@@ -54,9 +80,21 @@ showQuote();
 setInterval(showQuote, 5000);
 </script>
 
+<!-- Stylish Heading Box -->
+<div style="
+  background: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  max-width: 400px;
+  margin: 0 auto 25px auto;
+">
+  <h2 style="margin: 0; color: #333;">
+    🎓 Manual Student Prediction
+  </h2>
+</div>
 
-
-<h2>🎓 Manual Student Prediction</h2>
 
 <form method="post" id="predictForm">
   {% csrf_token %}
@@ -281,5 +319,37 @@ sendBtn.addEventListener("click", async () => {
   <p><b>💡 Study Tips:</b> {{ tips }}</p>
 </div>
 {% endif %}
+<style>
+/* --- Uniform Input Box Style --- */
+form p {
+  width: 100%;
+  max-width: 500px; /* sab boxes ki same width */
+  margin: 10px auto;
+}
+
+form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+form input, form select {
+  width: 100% !important;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+form input:focus, form select:focus {
+  outline: none;
+  border-color: #6a5acd;
+  box-shadow: 0 0 5px rgba(106, 90, 205, 0.4);
+}
+</style>
+
 {% endblock %}
 
