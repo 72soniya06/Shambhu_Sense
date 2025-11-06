@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3cb89e8a-cdc9-42ac-9f1b-64fe7bae4327" name="Changes" comment="recently updated">
-      <change beforePath="$PROJECT_DIR$/student_predictor/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/student_predictor/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/student_predictor/predictor/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/student_predictor/predictor/models.py" afterDir="false" />
-    </list>
+    <list default="true" id="3cb89e8a-cdc9-42ac-9f1b-64fe7bae4327" name="Changes" comment="recently updated" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -220,7 +217,23 @@
       <option name="project" value="LOCAL" />
       <updated>1762418115152</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="recently updated">
+      <option name="closed" value="true" />
+      <created>1762418875074</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1762418875074</updated>
+    </task>
+    <task id="LOCAL-00018" summary="recently updated">
+      <option name="closed" value="true" />
+      <created>1762418908204</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1762418908204</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
