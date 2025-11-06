@@ -69,3 +69,4 @@ class ChatHistory(models.Model):
     def __str__(self):
         return f"{self.user.username} - {self.timestamp.strftime('%Y-%m-%d %H:%M')}"
 
+b

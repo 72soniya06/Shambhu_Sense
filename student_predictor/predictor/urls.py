@@ -14,6 +14,7 @@ urlpatterns = [
     # Student pages
     path('predict/manual/', views.predict_manual, name='predict_manual'),
     path('predict/csv/', views.predict_csv, name='predict_csv'),
+    path('tests/', views.test_page, name='test_page'),
 
     # Downloads
     #path('download/<str:filename>/', views.download_file, name='download_file'),

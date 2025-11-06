@@ -6,7 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="3cb89e8a-cdc9-42ac-9f1b-64fe7bae4327" name="Changes" comment="recently updated">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/student_predictor/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/student_predictor/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student_predictor/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/student_predictor/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student_predictor/media/predicted_student_sample_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/student_predictor/media/predicted_student_sample_data.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student_predictor/media/student_sample_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/student_predictor/media/student_sample_data.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student_predictor/predictor/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/student_predictor/predictor/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student_predictor/predictor/templates/predictor/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/student_predictor/predictor/templates/predictor/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student_predictor/predictor/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/student_predictor/predictor/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/student_predictor/predictor/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/student_predictor/predictor/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,7 +210,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762273219706</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="recently updated">
+      <option name="closed" value="true" />
+      <created>1762274113268</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1762274113269</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -226,12 +240,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/student_predictor/predictor/views.py</url>
-          <line>322</line>
+          <line>294</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/student_predictor/predictor/views.py</url>
-          <line>368</line>
+          <line>340</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
