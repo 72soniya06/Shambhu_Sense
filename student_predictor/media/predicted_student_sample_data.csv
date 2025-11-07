@@ -1,7 +1,7 @@
 student name,category,class,gender,age,study hours,attendance,internal marks,assignments completed,percentage,cgpa,final grade,Predicted_Final_Grade
-soniya srivastava,school,10,Female,16,5,90,80,10,85,0.0,0,80.85
-soniya_shagun,school,12,Male,17,4,88,76,8,82,0.0,0,79.09
-Sanya Gupta,college,0,Female,20,6,85,78,9,0,8.2,0,77.6
+soniya_shagun,school,10,Female,16,5,90,80,10,85,0.0,0,80.85
+soniya srivastava,school,12,Male,17,4,88,76,8,82,0.0,0,79.09
+shagun gupta,college,0,Female,20,6,85,78,9,0,8.2,0,77.6
 Arjun Patel,college,0,Male,21,7,92,82,10,0,8.5,0,78.64
 Nisha Mehta,school,9,Female,15,3,80,70,7,78,0.0,0,71.41
 Rahul Jain,college,0,Male,22,6,89,83,9,0,8.0,0,77.11

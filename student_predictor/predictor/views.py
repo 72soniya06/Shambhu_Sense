@@ -374,6 +374,10 @@ def test_page(request):
     tests = [
         {"name": "B.Tech Test", "description": "Fundamentals of computer science", "link": "https://wayground.com/admin/quiz/6309c59bd4315a001dfe901a/fundamentals-of-computer-science"},
         {"name": "B.Tech Test", "description": "AQA Computer Science 8525 Giant Quizizz ", "link": "https://wayground.com/admin/quiz/5aed7e174ed324001bd45cc6/aqa-computer-science-paper-1-giant-quizizz?tab=search&source=search-result-page&page=search-result-page&arid=72cd3ddf-37c6-4e94-a3ef-df9268598c3e&apos=-1&term=python+paper"},
+        {"name": "B.Tech Test", "description": "Programming Languages","link":"https://wayground.com/admin/quiz/58d39840264f6d040691630f/programming-languages?tab=search&source=search-result-page&page=search-result-page&arid=&apos=-1&term=Programming+languages"},
+        {"name": "B.Tech Test", "description": "Java programming","link":"https://wayground.com/admin/quiz/626f58d3710e63001fdaf416/java-programming?tab=search&source=search-result-page&page=search-result-page&arid=&apos=-1&term=Java+programming"},
+        {"name": "B.Tech Test", "description": "html css and javascript","link":"https://wayground.com/admin/quiz/5eba3082e00e8b001bb4d72e/html-css-and-javascript?tab=search&source=search-result-page&page=search-result-page&arid=&apos=-1&term=Html+css+and+javascript"},
+        {"name": "B.Tech Test", "description": "Information Technology","link":"https://wayground.com/admin/quiz/66f64f009fddc05df25cfbc4/information-technology?tab=search&source=search-result-page&page=search-result-page&arid=d3eec9e7-6d6f-4513-bbeb-19f7a58796c0&apos=8&term=Information+technology"},
     ]
     return render(request, "predictor/test_page.html", {"tests": tests})
 
