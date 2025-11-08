@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3cb89e8a-cdc9-42ac-9f1b-64fe7bae4327" name="Changes" comment="recently updated">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/student_predictor/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/student_predictor/db.sqlite3" afterDir="false" />
-    </list>
+    <list default="true" id="3cb89e8a-cdc9-42ac-9f1b-64fe7bae4327" name="Changes" comment="recently updated" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -276,7 +273,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762524248863</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="recently updated">
+      <option name="closed" value="true" />
+      <created>1762607522308</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1762607522308</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
