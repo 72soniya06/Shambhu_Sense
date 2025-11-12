@@ -63,7 +63,7 @@ class PredictForm(forms.Form):
     # ✅ replaced previous_grade → internal_marks
     internal_marks = forms.FloatField(min_value=0, max_value=100, label="Internal Marks")
 
-    assignments_completed = forms.IntegerField(min_value=0)
+    assignments_completed = forms.IntegerField(min_value=0, max_value=10, label="Assignment_Completed")
 
     # Category-specific fields (school: percentage, college: cgpa)
     percentage = forms.FloatField(min_value=0, max_value=100, required=False, label="Percentage (for school)")
